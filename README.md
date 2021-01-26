@@ -20,7 +20,8 @@ Une fois que dev est dans un état satisfaisant pour passer en production il fau
 On crée d'abord une branche de support à la release. Elle servira à faire des modifications mineures.  
 
 `git checkout -b release/v1.2 dev`  
-modifications mineures 
+
+Modifications mineures 
  
 ```
 git checkout master 
