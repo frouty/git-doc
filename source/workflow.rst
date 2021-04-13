@@ -6,7 +6,7 @@ Workflow
 `ici <https://www.synbioz.com/blog/tech/git-adopter-un-modele-de-versionnement-efficace>`_  
 
 * branche **master** pour le code de production.
-* création d'un branche **dev**  
+* création d'une branche **dev**  
 * dev peut être utilisée pour faire des tests de production, une pre-install  
 
 Elle ne doit etre utilisée que pour les petites modifications.  
