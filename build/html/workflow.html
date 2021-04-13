@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Git workflow &#8212; Documentation git-docs v1.0</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Comment créer localement une branch à partir d’une branch remote" href="get_remote_branch.html" />
+    <link rel="prev" title="Welcome to git-docs’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="git-workflow">
+<h1>Git workflow<a class="headerlink" href="#git-workflow" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Lien permanent vers ce titre">¶</a></h2>
+<p><a class="reference external" href="https://www.synbioz.com/blog/tech/git-adopter-un-modele-de-versionnement-efficace">ici</a></p>
+<ul class="simple">
+<li><p>branche <strong>master</strong> pour le code de production.</p></li>
+<li><p>création d’un branche <strong>dev</strong></p></li>
+<li><p>dev peut être utilisée pour faire des tests de production, une pre-install</p></li>
+</ul>
+<p>Elle ne doit etre utilisée que pour les petites modifications.
+Créations de branches spécialisées pour des dévelopement de fonctionnalités</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">feature</span><span class="o">/</span><span class="n">foo</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>Une fois fini il faut merger dans dev:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">--</span><span class="n">ff</span> <span class="n">feature</span><span class="o">/</span><span class="n">foo</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">feature</span><span class="o">/</span><span class="n">foo</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>Une fois que <strong>dev</strong> est dans un état satisfaisant pour passer en production il faut merger <strong>dev</strong> dans master.
+On crée d’abord une branche de support à la release. Elle servira à faire des modifications mineures.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>Modifications mineures</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>On récupère ces informations de release dans dev.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="depanner-les-bugs-en-production">
+<h2>Dépanner les bugs en production<a class="headerlink" href="#depanner-les-bugs-en-production" title="Lien permanent vers ce titre">¶</a></h2>
+<p>On ne passe pas par dev. On fait un hotfix qui est un patch intégré directement dans la branche de production et ensuite appliquée à la branche dev.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;Bumped version number to 1.2.1&#39;</span>
+</pre></div>
+</div>
+<p>On corrige le bug et on l’intégre en production</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;Corrige le gros bug&#39;</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.</span>
+</pre></div>
+</div>
+<p>Mais également dans dev pour ne pas perdre le fix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+</pre></div>
+</div>
+<p>Le fix est intégré dans <strong>master</strong> et <strong>dev</strong> et on peut le supprimer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">git-docs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Git workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#depanner-les-bugs-en-production">Dépanner les bugs en production</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="get_remote_branch.html">Comment créer localement une branch à partir d’une branch remote</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="Chapitre précédent">Welcome to git-docs’s documentation!</a></li>
+      <li>Next: <a href="get_remote_branch.html" title="Chapitre suivant">Comment créer localement une branch à partir d’une branch remote</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Laurent FRANCOIS.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/workflow.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
