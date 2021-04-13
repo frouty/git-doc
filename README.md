@@ -66,3 +66,6 @@ git merge --no-ff hotfix/v1.2.1
 
 Le fix est intégré dans master et dev on peut le supprimer  
 `git branch -d hotfix/v1.2.1`
+
+# create a new local branch from a remote one #
+git checkout for Remote Branches :` $ git checkout --track origin/newsletter`
