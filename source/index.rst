@@ -12,6 +12,9 @@ Welcome to git-docs's documentation!
 
    workflow.rst
    get_remote_branch.rst
+   git_tree_terminal
+   undo-things
+
 	
 
 
