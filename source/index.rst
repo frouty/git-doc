@@ -14,6 +14,8 @@ Welcome to git-docs's documentation!
    get_remote_branch.rst
    git_tree_terminal
    undo-things
+   customizing_git
+   error_while_reading_sideband.rst
 
 	
 
