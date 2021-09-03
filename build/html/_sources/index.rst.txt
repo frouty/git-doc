@@ -10,12 +10,12 @@ Welcome to git-docs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   workflow.rst
-   get_remote_branch.rst
+   workflow
+   get_remote_branch
    git_tree_terminal
    undo-things
    customizing_git
-   error_while_reading_sideband.rst
+   error_while_reading_sideband
 
 	
 

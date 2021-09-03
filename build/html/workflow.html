@@ -61,7 +61,7 @@ On crée d’abord une branche de support à la release. Elle servira à faire d
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2</span> <span class="n">dev</span>
 </pre></div>
 </div>
-<p>Modifications mineures</p>
+<p>On fait les modifications mineures puis:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2</span>
 <span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="mf">.2</span>
@@ -85,7 +85,7 @@ On crée d’abord une branche de support à la release. Elle servira à faire d
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;Corrige le gros bug&#39;</span>
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2.1</span>
-<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="mf">.2</span><span class="o">.</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="mf">.2.1</span>
 </pre></div>
 </div>
 <p>Mais également dans dev pour ne pas perdre le fix.</p>
@@ -127,6 +127,8 @@ On crée d’abord une branche de support à la release. Elle servira à faire d
 <li class="toctree-l1"><a class="reference internal" href="get_remote_branch.html">Comment créer localement une branch à partir d’une branch remote</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_tree_terminal.html">Show git tree in terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="undo-things.html">Undo with git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing_git.html">Customizing git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_while_reading_sideband.html">Error while reading sideband</a></li>
 </ul>
 
 <div class="relations">

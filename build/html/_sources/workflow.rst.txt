@@ -31,7 +31,7 @@ On crée d'abord une branche de support à la release. Elle servira à faire des
 
 	git checkout -b release/v1.2 dev 
 
-Modifications mineures 
+On fait les modifications mineures puis:
 ::
 
 	git checkout master 
@@ -61,7 +61,7 @@ On corrige le bug et on l'intégre en production
 	git commit -m 'Corrige le gros bug'
 	git checkout master
 	git merge --no-ff hotfix/v1.2.1
-	git tag -a v1.2.
+	git tag -a v1.2.1
 
 
 Mais également dans dev pour ne pas perdre le fix.
