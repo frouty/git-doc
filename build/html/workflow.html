@@ -4,11 +4,12 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Git workflow &#8212; Documentation git-docs v1.0</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -33,14 +34,14 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="git-workflow">
+  <section id="git-workflow">
 <h1>Git workflow<a class="headerlink" href="#git-workflow" title="Lien permanent vers ce titre">¶</a></h1>
-<div class="section" id="workflow">
+<section id="workflow">
 <h2>Workflow<a class="headerlink" href="#workflow" title="Lien permanent vers ce titre">¶</a></h2>
 <p><a class="reference external" href="https://www.synbioz.com/blog/tech/git-adopter-un-modele-de-versionnement-efficace">ici</a></p>
 <ul class="simple">
 <li><p>branche <strong>master</strong> pour le code de production.</p></li>
-<li><p>création d’un branche <strong>dev</strong></p></li>
+<li><p>création d’une branche <strong>dev</strong></p></li>
 <li><p>dev peut être utilisée pour faire des tests de production, une pre-install</p></li>
 </ul>
 <p>Elle ne doit etre utilisée que pour les petites modifications.
@@ -57,47 +58,47 @@ Créations de branches spécialisées pour des dévelopement de fonctionnalités
 </div>
 <p>Une fois que <strong>dev</strong> est dans un état satisfaisant pour passer en production il faut merger <strong>dev</strong> dans master.
 On crée d’abord une branche de support à la release. Elle servira à faire des modifications mineures.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span> <span class="n">dev</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2</span> <span class="n">dev</span>
 </pre></div>
 </div>
-<p>Modifications mineures</p>
+<p>On fait les modifications mineures puis:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
-<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="mf">.2</span>
 </pre></div>
 </div>
 <p>On récupère ces informations de release dans dev.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
-<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">release</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="depanner-les-bugs-en-production">
+</section>
+<section id="depanner-les-bugs-en-production">
 <h2>Dépanner les bugs en production<a class="headerlink" href="#depanner-les-bugs-en-production" title="Lien permanent vers ce titre">¶</a></h2>
 <p>On ne passe pas par dev. On fait un hotfix qui est un patch intégré directement dans la branche de production et ensuite appliquée à la branche dev.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span> <span class="n">master</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2.1</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;Bumped version number to 1.2.1&#39;</span>
 </pre></div>
 </div>
 <p>On corrige le bug et on l’intégre en production</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;Corrige le gros bug&#39;</span>
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
-<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="o">.</span><span class="mf">2.</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2.1</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="mf">.2.1</span>
 </pre></div>
 </div>
 <p>Mais également dans dev pour ne pas perdre le fix.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">dev</span>
-<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2.1</span>
 </pre></div>
 </div>
 <p>Le fix est intégré dans <strong>master</strong> et <strong>dev</strong> et on peut le supprimer</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="mf">2.1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">hotfix</span><span class="o">/</span><span class="n">v1</span><span class="mf">.2.1</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -124,6 +125,10 @@ On crée d’abord une branche de support à la release. Elle servira à faire d
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="get_remote_branch.html">Comment créer localement une branch à partir d’une branch remote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_tree_terminal.html">Show git tree in terminal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undo-things.html">Undo with git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing_git.html">Customizing git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_while_reading_sideband.html">Error while reading sideband</a></li>
 </ul>
 
 <div class="relations">
@@ -161,7 +166,7 @@ On crée d’abord une branche de support à la release. Elle servira à faire d
       &copy;2021, Laurent FRANCOIS.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
