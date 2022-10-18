@@ -20,7 +20,7 @@ Une fois fini il faut merger dans dev:
 ::
 
 	git checkout dev
-	git merge --no--ff feature/foo
+	git merge --no-ff feature/foo
 	git branch -d feature/foo
 	git push origin dev
 
