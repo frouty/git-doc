@@ -12,10 +12,14 @@ Welcome to git-docs's documentation!
 
    workflow
    get_remote_branch
+   delete-remote-branch
    git_tree_terminal
    undo-things
    customizing_git
+   comparaison
+   tips-tricks-git
    error_while_reading_sideband
+   
 
 	
 
