@@ -23,7 +23,6 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
-  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
 
@@ -33,18 +32,17 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <h1 id="search-documentation">Recherche</h1>
   
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
+  <noscript>
+  <div class="admonition warning">
   <p>
     Veuillez activer le JavaScript pour que la recherche fonctionne.
   </p>
   </div>
+  </noscript>
   
   
   <p>
@@ -53,7 +51,7 @@
   
   
   <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
     <input type="submit" value="rechercher" />
     <span id="search-progress" style="padding-left: 10px"></span>
   </form>
@@ -66,7 +64,6 @@
   
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -81,13 +78,19 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Git workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_remote_branch.html">Comment créer localement une branch à partir d’une branch remote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delete-remote-branch.html">Delete remote branch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git_tree_terminal.html">Show git tree in terminal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="undo-things.html">Undo with git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="customizing_git.html">Customizing git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparaison.html">Comparaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-tricks-git.html">Connaitre la différence entre un meme fichier de deux branches  différentes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-tricks-git.html#connaitre-la-difference-entre-deux-branches">Connaitre la différence entre deux branches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-tricks-git.html#gestion-des-branches">Gestion des branches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips-tricks-git.html#voir-tous-les-fichiers-tracked-par-le-git-repo">Voir tous les fichiers tracked par le git repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="error_while_reading_sideband.html">Error while reading sideband</a></li>
 </ul>
 
@@ -98,14 +101,6 @@
   </ul></li>
 </ul>
 </div>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -114,8 +109,8 @@
       &copy;2021, Laurent FRANCOIS.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
     </div>
 

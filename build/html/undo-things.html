@@ -4,8 +4,7 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Undo with git &#8212; Documentation git-docs v1.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -16,10 +15,10 @@
     <script src="_static/translations.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Customizing git" href="customizing_git.html" />
     <link rel="prev" title="Show git tree in terminal" href="git_tree_terminal.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -29,13 +28,11 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
-  <section id="undo-with-git">
+  <div class="section" id="undo-with-git">
 <h1>Undo with git<a class="headerlink" href="#undo-with-git" title="Lien permanent vers ce titre">¶</a></h1>
-<section id="workflow-git">
+<div class="section" id="workflow-git">
 <h2>Workflow git<a class="headerlink" href="#workflow-git" title="Lien permanent vers ce titre">¶</a></h2>
 <ol class="arabic simple">
 <li><p>You create or edit a file. Il est unstaged. Il n’est pas encore tracké par git</p></li>
@@ -43,26 +40,25 @@
 <li><p>You commit sur le repository local: <strong>git commit</strong></p></li>
 <li><p>You push the file to a remote repository: <strong>git push</strong></p></li>
 </ol>
-</section>
-<section id="undo-local-changes">
+</div>
+<div class="section" id="undo-local-changes">
 <h2>Undo local changes<a class="headerlink" href="#undo-local-changes" title="Lien permanent vers ce titre">¶</a></h2>
-<section id="undo-unstaged-local-changes-before-git-add">
+<div class="section" id="undo-unstaged-local-changes-before-git-add">
 <h3>Undo unstaged local changes : before git add<a class="headerlink" href="#undo-unstaged-local-changes-before-git-add" title="Lien permanent vers ce titre">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Annuler les changements : <strong>git checkout &lt;file&gt;</strong>. On checkout la version du fichier.</p></li>
 <li><p>Sauvegarder  les changements pour pouvoir les utiliser plus tard: <strong>git stash</strong></p></li>
 <li><p>Pour annuler tous les changements de tous les fichiers, de facon permanente: <strong>git reset –hard</strong></p></li>
 </ol>
-</section>
-<section id="undo-staged-local-files">
+</div>
+<div class="section" id="undo-staged-local-files">
 <h3>Undo staged local files<a class="headerlink" href="#undo-staged-local-files" title="Lien permanent vers ce titre">¶</a></h3>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -77,7 +73,7 @@
 
 
 <h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="workflow.html">Git workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="get_remote_branch.html">Comment créer localement une branch à partir d’une branch remote</a></li>
@@ -87,6 +83,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#undo-local-changes">Undo local changes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="customizing_git.html">Customizing git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparaison.html">Comparaison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_while_reading_sideband.html">Error while reading sideband</a></li>
 </ul>
 
 <div class="relations">
@@ -94,6 +93,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="git_tree_terminal.html" title="Chapitre précédent">Show git tree in terminal</a></li>
+      <li>Next: <a href="customizing_git.html" title="Chapitre suivant">Customizing git</a></li>
   </ul></li>
 </ul>
 </div>
@@ -101,20 +101,12 @@
   <h3 id="searchlabel">Recherche rapide</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
@@ -123,8 +115,8 @@
       &copy;2021, Laurent FRANCOIS.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
       <a href="_sources/undo-things.rst.txt"

@@ -24,3 +24,6 @@ git fetch --unshallow
 git pull --all
 
 et cela n'a pas marché j'ai toujours la meme erreur.
+
+
+J'ai réglé le probleme en faisant je crois bbla unpack dans un autre repertoire git. Je ne sais plus exactement.
