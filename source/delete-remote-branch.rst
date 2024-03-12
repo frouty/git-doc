@@ -7,4 +7,11 @@ Delete remote branch
 
 or ::
 
-   git push origin :branch_name old syntax
+   git push origin :branch_name #old syntax
+   
+   Comment  lister les remote branches
+   ##########################
+   
+   ::
+   
+      git branch -r

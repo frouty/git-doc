@@ -1,32 +1,16 @@
-.. git-docs documentation master file, created by
-   sphinx-quickstart on Tue Apr 13 22:53:28 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. git.doc Documentation master file.
 
-Welcome to git-docs's documentation!
-====================================
+##################################
+Welcome to git.doc's Documentation
+##################################
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
-   workflow
-   get_remote_branch
-   delete-remote-branch
-   git_tree_terminal
-   undo-things
-   customizing_git
-   comparaison
-   tips-tricks-git
-   error_while_reading_sideband
    
-
-	
-
+   
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
